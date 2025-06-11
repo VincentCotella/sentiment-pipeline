@@ -34,3 +34,20 @@ Ci-dessous, le diagramme (Mermaid) de l’architecture générale :
 ├── docs/
 │ └── architecture.png
 └── README.md
+
+## Utilisation de l'ETL
+
+Exemple pour nettoyer un fichier CSV :
+
+```bash
+python etl.py --source csv --input data/raw/tweets.csv
+```
+
+Pour récupérer des tweets en direct via l'API :
+
+```bash
+python etl.py --source api
+```
+
+Les données nettoyées sont sauvegardées dans `data/clean/tweets.parquet` et
+`data/clean/tweets.db`.
