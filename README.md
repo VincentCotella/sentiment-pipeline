@@ -48,6 +48,8 @@ Pour récupérer des tweets en direct via l'API :
 ```bash
 python etl.py --source api
 ```
+Les clés d'API doivent être définies dans la variable `TWITTER_BEARER_TOKEN`,
+par exemple dans un fichier `.env`.
 
 Les données nettoyées sont sauvegardées dans `data/clean/tweets.parquet` et
 `data/clean/tweets.db`.

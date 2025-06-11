@@ -67,16 +67,18 @@ def load_from_api() -> pd.DataFrame:
 
     client = tweepy.Client(bearer_token=bearer, wait_on_rate_limit=True)
     query = "lang:fr -is:retweet"
-    tweets = client.search_recent_tweets(
+    response = client.search_recent_tweets(
         query=query,
         tweet_fields=["id", "text", "created_at", "lang"],
         max_results=100,
     )
-    data = [t.data for t in tweets]
+    tweets = response.data or []
+    data = [tweet.data for tweet in tweets]
     return pd.DataFrame(data)
 
 
 def transform(df: pd.DataFrame) -> pd.DataFrame:
+    """Filter French tweets and add a ``clean_text`` column."""
     df = df[df.get("lang") == "fr"].copy()
     df["clean_text"] = df["text"].astype(str).apply(clean_text)
     return df
