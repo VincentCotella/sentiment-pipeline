@@ -18,7 +18,7 @@ Ci-dessous, le diagramme (Mermaid) de l’architecture générale :
 ---
 
 ## Structure du dépôt
-
+```
 ├── etl.py
 ├── train.py
 ├── evaluate.py
